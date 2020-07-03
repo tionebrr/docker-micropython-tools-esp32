@@ -43,7 +43,10 @@ This command will start the container in interactive mode. You'll end up in the 
 docker run -it --rm -v $HOME/micropython/:/root/micropython --device=/dev/ttyUSB0:/dev/ttyUSB0 tionebrr/micropython-tools-esp32 
 ```
 Don't forget to replace the paths with your micropython folder and your ESP32 serial device.
-
+If you want to use this image and rshell to upload custom scripts to your device, you will need to specify a volume in the docker run command. Simply add `-v /path/to/your/µpy/scripts:/root/scripts` before the container image name (`tionebrr/micro...`) like this:
+```zsh
+docker run -it --rm -v $HOME/micropython/:/root/micropython -v $HOME/micropython-scripts:/root/scripts --device=/dev/ttyUSB0:/dev/ttyUSB0 tionebrr/micropython-tools-esp32 
+```
 # Build, deploy:
 Once in the container shell, you can build and deploy using the same commands you would use with a normal micropython build environment.
 
