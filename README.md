@@ -12,7 +12,8 @@ It will take a while.
 
 ## Run the container:
 This command will start the container in interactive mode. You'll end up in a bash sheel ready to build.
-```& docker run -it -rm \ 
+```
+& docker run -it -rm \ 
 	-v <PATH TO YOUR Micropython REPO>:/root/micropython \
 	--device=<PATH TO YOUR ESP32 SERIAL (ttyUSBx)> \
 	esp32-micropython-build
