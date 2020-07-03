@@ -1,7 +1,7 @@
 # ESP32 Micropython build and tool container
-This docker container will build, deploy and monitor your esp32 micropython firmware. Using this is pretty straightforward and doesn't change a lot compared to using a simple build environment on your host or on a VM. 
-The main advantage is that you don't need a python virtual environment and you can have the latest ESP-IDF installed on your machine and still build and use micropython without having to change anything on your main session. It also simplifies the installation and setting of the build environement.
-The image comes with ESP-IDF v4.0.1, python3 and rshell.
+This docker container will build, deploy, and monitor your esp32 micropython firmware. Using this is pretty straightforward and doesn't change a lot compared to using a simple build environment on your host or on a VM. 
+The main advantage is that you don't need a python virtual environment and you can have the latest ESP-IDF installed on your machine and still build and use micropython without having to change anything on your main session. It also simplifies the installation and setting of the build environment.
+The image comes with ESP-IDF v4.0.1, python3, and rshell.
 
 # Getting the container image:
 ### Recommended: Pull from docker:
@@ -40,10 +40,7 @@ If you have read the micropython esp32 readme, you may be wondering where are th
 # Run the container:
 This command will start the container in interactive mode. You'll end up in the container bash shell, ready to build.
 ```zsh
-docker run -it --rm \ 
-	-v your/path/to/micropython:/root/micropython \
-	--device=/dev/your/esp32/ttyUSBx:/dev/ttyUSB0 \
-	micropython-tools-esp32 /bin/bash
+docker run -it --rm -v $HOME/micropython/:/root/micropython --device=/dev/ttyUSB0:/dev/ttyUSB0 tionebrr/micropython-tools-esp32 
 ```
 Don't forget to replace the paths with your micropython folder and your ESP32 serial device.
 
@@ -76,3 +73,4 @@ rshell -p /dev/ttyUSB0 -b 115200
 Sure, just type `exit`.
 
 Have fun.
+
