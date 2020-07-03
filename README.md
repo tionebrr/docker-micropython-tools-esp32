@@ -7,7 +7,7 @@ The image comes with ESP-IDF v4.0.1, python3 and rshell.
 ### Recommended: Pull from docker:
 You can simply pull this container image from docker hub by issuing:
 ```zsh
-git@github.com:tionebrr/docker-micropython-tools-esp32.git
+docker pull tionebrr/micropython-tools-esp32
 ```
 ### OR Build the container image from github:
 You can also clone this repository in the folder of your choice, then cd into it and build the container image yourself.
