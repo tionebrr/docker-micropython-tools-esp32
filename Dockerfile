@@ -1,10 +1,8 @@
-FROM ubuntu:20.04
+FROM alpine:3.7
 
 SHELL ["/bin/bash", "-c"]
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update -y && apt-get install -y git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util
+RUN apk add --no-cache git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 ENV PYTHON2=python
