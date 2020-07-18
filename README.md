@@ -1,5 +1,5 @@
 # ESP32 Micropython build and tool container
-This docker container will build, deploy, and monitor your esp32 micropython firmware. Using this is pretty straightforward and doesn't change a lot compared to using a simple build environment on your host or on a VM. Also, it allows you to build micropython without having to juggle with python venv and environement variable.
+This docker container will build, deploy, and monitor your esp32 micropython firmware. Using this is pretty straightforward and doesn't change a lot compared to using a simple build environment on your host or on a VM. Also, it allows you to build micropython without having to juggle with python venv, ESP-IDF versions, and environment variable.
 The image comes with ESP-IDF v4.0.1, python3, and rshell. The container image size is 1.65GB, but could surely be smaller. Suggestions welcome.
 
 # Getting the container image:
