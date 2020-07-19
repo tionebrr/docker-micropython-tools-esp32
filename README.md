@@ -1,6 +1,6 @@
 # ESP32 Micropython build and tool container
 This docker container will build, deploy, and monitor your esp32 micropython firmware. Using this is pretty straightforward and doesn't change a lot compared to using a simple build environment on your host or on a VM. Also, it allows you to build micropython without having to juggle with python venv, ESP-IDF versions, and environment variable.
-The image comes with ESP-IDF v4.0.1, python3, and rshell. The container image size is 1.65GB, but could surely be smaller. Suggestions welcome.
+The image comes with ESP-IDF v4.0.1, python3, and rshell. The container image size is 1.88GB, but could surely be smaller. Suggestions welcome.
 
 # Getting the container image:
 ### Recommended: Pull from docker:
@@ -39,11 +39,11 @@ If you have read the micropython esp32 readme, you may be wondering where are th
 # Run the container:
 This command will start the container in interactive mode. You'll end up in the container bash shell, ready to build. Don't forget to replace the paths with your micropython folder and your ESP32 serial device.
 ```zsh
-docker run -it --rm -v $HOME/micropython/:/root/micropython --device=/dev/ttyUSB0:/dev/ttyUSB0 tionebrr/micropython-tools-esp32 
+docker run -it --rm -v path/to/your/micropython/:/root/micropython --device=/dev/ttyUSBx:/dev/ttyESP tionebrr/micropython-tools-esp32 
 ```
 If you want to use rshell from this container to upload custom scripts to your device, you will need to specify a volume in the docker run command. Simply add `-v /path/to/your/µpy/scripts:/root/scripts` before the container image name (`tionebrr/micro...`) like this:
 ```zsh
-docker run -it --rm -v $HOME/micropython/:/root/micropython -v $HOME/micropython-scripts:/root/scripts --device=/dev/ttyUSB0:/dev/ttyUSB0 tionebrr/micropython-tools-esp32 
+docker run -it --rm -v path/to/your/micropython/:/root/micropython -v path/to/your/micropython-scripts:/root/scripts --device=/dev/ttyUSBx:/dev/ttyESP tionebrr/micropython-tools-esp32 
 ```
 # Build micropython, deploy to ESP32:
 Once in the container shell, you can build and deploy using the same commands you would use with a normal micropython build environment.
@@ -51,8 +51,9 @@ Once in the container shell, you can build and deploy using the same commands yo
 If it was not already done in your micropython folder, you need to build the mpy cross compiler first:
 ```zsh
 cd micropython/mpy-cross
-make mpy-cross
+CROSS_COMPILE='' make
 ```
+I may remove the capability of building mpy-cross from the container in the future; most developers already have gcc and make installed for their system and could build mpy-cross from the host.
 
 You can now build and deploy micropython to your ESP32.
 ```zsh
@@ -67,7 +68,7 @@ You can find the output files in `micropython/ports/esp32/build-GENERIC` and the
 # Start rshell: 
 After building and deploying, you can interact with the micropython REPL using rshell.
 ```zsh
-rshell -p /dev/ttyUSB0 -b 115200
+rshell -p PORT -b 115200
 ```
 
 Have fun.
