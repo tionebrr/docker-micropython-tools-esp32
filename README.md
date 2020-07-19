@@ -68,7 +68,7 @@ You can find the output files in `micropython/ports/esp32/build-GENERIC` and the
 # Start rshell: 
 After building and deploying, you can interact with the micropython REPL using rshell.
 ```zsh
-rshell -p PORT -b 115200
+rshell -p $PORT -b 115200
 ```
 
 Have fun.
