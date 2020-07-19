@@ -17,11 +17,10 @@ WORKDIR /root/esp-idf
 RUN git checkout 4c81978a3e2220674a432a588292a4c860eef27b
 RUN git submodule update --init --recursive
 RUN ./install.sh
-RUN . ./export.sh
 
 ENV ESPIDF=/root/esp-idf
 ENV CROSS_COMPILE=/root/.espressif/tools/xtensa-esp32-elf/esp-2019r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-
-ENV PORT=/dev/ttyUSB0
+ENV PORT=/dev/ttyESP
 
 WORKDIR /root
 
