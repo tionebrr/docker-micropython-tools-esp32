@@ -1,4 +1,4 @@
-# I am not using Micropython anyore, so this repo is UNMAINTAINED
+# I am not using Micropython anymore, so this repo is UNMAINTAINED
 
 # ESP32 Micropython build and tool container
 This docker container will build, deploy, and monitor your esp32 micropython firmware. Using this is pretty straightforward and doesn't change a lot compared to using a simple build environment on your host or on a VM. Also, it allows you to build micropython without having to juggle with python venv, ESP-IDF versions, and environment variable.
